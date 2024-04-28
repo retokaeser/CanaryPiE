@@ -116,3 +116,54 @@ sudo nft list ruleset
 ## scanlogd
 scanlogd is a TCP port scan detection tool. For more information see the following article.
 http://phrack.org/issues/53/13.html#article
+
+
+## Supervisor
+Supervisor is a client/server system that allows its users to monitor and control a number of processes on UNIX-like operating systems.
+http://supervisord.org/
+http://supervisord.org/introduction.html
+
+Used for Cowrie and Impacket processes.
+
+sudo supervisorctl
+- status
+- stop / start / restart [component]
+
+/etc/supervisor/conf.d/*.conf
+
+## Cowrie
+https://github.com/cowrie/cowrie
+
+Customizing:
+https://cryptax.medium.com/customizing-your-cowrie-honeypot-8542c888ca49
+
+## Impacket (SMB Port 445)
+Impacket is a collection of Python classes for working with network protocols. Impacket is focused on providing low-level programmatic access to the packets and for some protocols (e.g. SMB1-3 and MSRPC) the protocol implementation itself. Packets can be constructed from scratch, as well as parsed from raw data, and the object-oriented API makes it simple to work with deep hierarchies of protocols. The library provides a set of tools as examples of what can be done within the context of this library (from README.md).
+https://github.com/fortra/impacket
+Add to supervisor:
+
+## Lighttpd (Port 80 & 443)
+
+## Logcheck
+https://manpages.ubuntu.com/manpages/trusty/man8/logcheck.8.html
+https://linux.die.net/man/8/logcheck
+https://fcerbell.github.io/Debian113Server110Logchecktonotifyaboutanyunknownactivit-en/
+/etc/logcheck/logcheck.logfiles.d/
+sudo -u logcheck logcheck -o -t
+
+## Exim4 (Mail)
+
+dpkg-reconfigure exim4-config
+
+sudo -u logcheck logcheck -o -t | mail -s "subject" -aFrom:"email-addr"\<name@any.com\> email-addr
+
+#!/bin/sh
+string=$(sudo -u logcheck logcheck -o)
+len=${#string}
+if [ "$len" -gt "0" ]
+   then echo "$string" | mail -s "subject" -aFrom:"email-addr"\<name@any.com\> email-addr
+fi
+
+
+
+

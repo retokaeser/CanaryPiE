@@ -31,8 +31,19 @@ PORT    STATE    SERVICE
 MAC Address: D8:3A:DD:xx:xx:xx (Unknown)
 ```
 
-## Disable IPv6
+## Hardware Requirements
+The project was installed on (will probably run on less):
+
+- Raspberry Pi 5 Model 8GB
+- with a SanDisk microSDHC-Karte Ultra UHS-I A1 32 GB
+- running Raspberry Pi OS [Debian GNU/Linux 12 (bookworm)]
+
+
+## Disable IPv6 (optional)
+As we don't run any applications or services that rely on IPv6 let's disable it. But there is no harm to leave it enabled.
+
 Edit /boot/firmware/cmdline.txt
+
 ```
 Add ipv6.disable=1 to the end of the line
 
@@ -62,16 +73,14 @@ cat /proc/sys/net/ipv6/conf/all/disable_ipv6
 
 If you see 1, ipv6 has been successfully disabled.
 
-## macchanger
+## macchanger (optional)
+
+The reasoning behind spoofing the mac address is to potentially hide the fact that you have a single Raspberry Pi in your network (it could be a hint that it's acting as a honeypot). Pick a mac address which blends into your network. 
+
 https://pimylifeup.com/raspberry-pi-mac-address-spoofing/
+
 ARP Discovery using nmap (layer 2)
 nmap -PR -sn 192.168.xx.xx
-
-ICMP Ping using nmap (layer 3)
-nmap -PE -sn 192.168.xx.xx
-
-TCP ACK Ping using nmap (layer 4)
-nmap -PA80 -sn 192.168.xx.xx
 
 Starting Nmap 7.94 ( https://nmap.org ) at 2024-03-31 10:21 W. Europe Daylight Time
 Nmap scan report for 192.168.xx.xx
@@ -88,7 +97,8 @@ GB
 Range	D8:3A:DD:00:00:00 - D8:3A:DD:FF:FF:FF
 Type 	IEEE MA-L
 
-## nftables
+## nftables (optional)
+
 Configure the nftables firewall to start by default upon system boot:
 sudo systemctl enable nftables.service
 

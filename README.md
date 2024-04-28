@@ -15,7 +15,7 @@ It will also attempt to lure attackers (virtual trap aka honeypot) by providing 
 
 It is based on a design and deployment model, intended to look like a legitimate and possibly vulnerable system to attract as many classes of cybercriminals as possible.
 
-```
+<pre>
 nmap 192.168.xx.xx
 
 Starting Nmap 7.94 ( https://nmap.org ) at 202x-xx-xx 12:58
@@ -29,7 +29,7 @@ PORT    STATE    SERVICE
 443/tcp open     https
 445/tcp open     microsoft-ds
 MAC Address: D8:3A:DD:xx:xx:xx (Unknown)
-```
+</pre>
 
 ## Hardware Requirements
 The project was installed on (will probably run on less):
@@ -44,27 +44,27 @@ As we don't run any applications or services that rely on IPv6 let's disable it.
 
 Edit /boot/firmware/cmdline.txt
 
-```
+<pre>
 Add ipv6.disable=1 to the end of the line
 
 e.g. console=serial0,115200 console=tty1 root=PARTUUID=7cd76f4e-02 rootfstype=ext4 fsck.repair=yes rootwait quiet splash plymouth.ignore-serial-consoles cfg80211.ieee80211_regdom=CH ipv6.disable=1
-```
+</pre>
 
 Edit /etc/sysctl.conf
-```
+<pre>
 net.ipv6.conf.all.disable_ipv6 = 1
 net.ipv6.conf.default.disable_ipv6 = 1
 net.ipv6.conf.lo.disable_ipv6 = 1
-```
+</pre>
 
 sudo sysctl -p
 
 You will see this in the terminal:
-```
+<pre>
 net.ipv6.conf.all.disable_ipv6 = 1
 net.ipv6.conf.default.disable_ipv6 = 1
 net.ipv6.conf.lo.disable_ipv6 = 1
-```
+</pre>
 Reboot
 
 and then:
@@ -160,12 +160,14 @@ dpkg-reconfigure exim4-config
 
 sudo -u logcheck logcheck -o -t | mail -s "subject" -aFrom:"email-addr"\<name@any.com\> email-addr
 
+<pre>
 #!/bin/sh
 string=$(sudo -u logcheck logcheck -o)
 len=${#string}
 if [ "$len" -gt "0" ]
    then echo "$string" | mail -s "subject" -aFrom:"email-addr"\<name@any.com\> email-addr
 fi
+</pre>
 
 
 

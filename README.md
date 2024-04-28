@@ -31,6 +31,24 @@ PORT    STATE    SERVICE
 MAC Address: D8:3A:DD:xx:xx:xx (Unknown)
 </pre>
 
+
+| Port | State | Service | Process
+| ---- | ----- | ------- | -------
+22/tcp | open | ssh | Cowrie
+25/tcp | filtered | smtp | Exim4 MTA
+80/tcp | open | httpd | lighttpd
+443/tcp | open | https | lighttpd
+445/tcp | open | smb | Impacket
+
+In its initial version CanaryPiE is pure honeypot that monitors attacks through bug taps. Next steps will to be to move to a high-interaction honeypot that will behave like real production infrastructure and will not restrict the level of activity of a cybercriminal. It will also be populated with fake information classified as sensitive to track potential data leaks.
+
+## Honeypot Resources
+- https://github.com/paralax/awesome-honeypots
+- https://dingtoffee.medium.com/creating-a-honeypot-on-raspberry-pi-475858a2ba88
+- https://medium.com/@alt3kx/build-an-easy-rdp-honeypot-with-raspberry-pi-3-and-observe-the-infamous-attacks-as-bluekeep-29a167f78cc1
+- https://www.researchgate.net/publication/325952854_Raspberry_Pi_based_intrusion_detection_system
+
+
 ## Hardware Requirements
 The project was installed on (will probably run on less):
 

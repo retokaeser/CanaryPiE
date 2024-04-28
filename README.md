@@ -131,24 +131,27 @@ sudo supervisorctl
 
 /etc/supervisor/conf.d/*.conf
 
-## Cowrie
+## Cowrie (SSH port 22 and optional telnet port 23)
 https://github.com/cowrie/cowrie
 
 Customizing:
 https://cryptax.medium.com/customizing-your-cowrie-honeypot-8542c888ca49
 
-## Impacket (SMB Port 445)
+## Impacket (SMB port 445)
 Impacket is a collection of Python classes for working with network protocols. Impacket is focused on providing low-level programmatic access to the packets and for some protocols (e.g. SMB1-3 and MSRPC) the protocol implementation itself. Packets can be constructed from scratch, as well as parsed from raw data, and the object-oriented API makes it simple to work with deep hierarchies of protocols. The library provides a set of tools as examples of what can be done within the context of this library (from README.md).
 https://github.com/fortra/impacket
 Add to supervisor:
 
-## Lighttpd (Port 80 & 443)
+## Lighttpd (HTTP/S ports 80 & 443)
 
 ## Logcheck
-https://manpages.ubuntu.com/manpages/trusty/man8/logcheck.8.html
-https://linux.die.net/man/8/logcheck
-https://fcerbell.github.io/Debian113Server110Logchecktonotifyaboutanyunknownactivit-en/
+
+- https://manpages.ubuntu.com/manpages/trusty/man8/logcheck.8.html
+- https://linux.die.net/man/8/logcheck
+- https://fcerbell.github.io/Debian113Server110Logchecktonotifyaboutanyunknownactivit-en/
+
 /etc/logcheck/logcheck.logfiles.d/
+
 sudo -u logcheck logcheck -o -t
 
 ## Exim4 (Mail)

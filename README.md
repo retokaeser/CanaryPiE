@@ -91,6 +91,16 @@ cat /proc/sys/net/ipv6/conf/all/disable_ipv6
 
 If you see 1, ipv6 has been successfully disabled.
 
+If syslog is filled with 
+<pre>
+NetworkManager[836]: <warn>  [1714491897.7294] platform-linux: do-add-ip6-address[3: fe80::7642:4d97:f652:adbb]: failure 95 (Operation not supported)
+</pre>
+then also execute:
+
+<pre>
+nmcli d modify wlan0 ipv6.method "disabled"
+</pre>
+
 ## macchanger (optional)
 
 The reasoning behind spoofing the mac address is to potentially hide the fact that you have a single Raspberry Pi in your network (it could be a hint that it's acting as a honeypot). Pick a mac address which blends into your network. 

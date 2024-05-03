@@ -197,6 +197,17 @@ if [ "$len" -gt "0" ]
 fi
 </pre>
 
+Show queue length:
+exim -bpc
+
+Show content of queue:
+exim -bp
+
+Delete queue:
+exim -bp | exiqgrep -ix | xargs exim -Mrm
+
+
+
 
 
 
